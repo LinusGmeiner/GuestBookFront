@@ -44,9 +44,9 @@ namespace GuestBookFront.Pages
 
             GuestBookEntry guestBookEntry = new GuestBookEntry();
             guestBookEntry.Title = Request.Form["title"];
-            guestBookEntry.Comment = Request.Form["comment"];
-            guestBookEntry.Name = Request.Form["name"];
-            guestBookEntry.Time = DateTime.UtcNow;
+            guestBookEntry.Text = Request.Form["text"];
+            guestBookEntry.Visitor = Request.Form["visitor"];
+            guestBookEntry.Created = DateTime.UtcNow;
 
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 PostUrl, guestBookEntry);
@@ -71,7 +71,7 @@ namespace GuestBookFront.Pages
                 string rawResult = await response.Content.ReadAsStringAsync();
                 guestBookEntries = ((JArray)(JObject.Parse(rawResult)["entries"])).ToObject<List<GuestBookEntry>>();
             }
-            _guestBookList = guestBookEntries.OrderByDescending(x => x.Time).ToList<GuestBookEntry>();
+            _guestBookList = guestBookEntries.OrderByDescending(x => x.Created).ToList<GuestBookEntry>();
         }
     }
 }

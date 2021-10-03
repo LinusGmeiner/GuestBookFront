@@ -10,10 +10,10 @@
             <input type="text" name="title" value="Titel" /> <br />
 
             <label>Name: </label>
-            <input type="text" name="name" value="Name" /> <br />
+            <input type="text" name="visitor" value="Visitor" /> <br />
 
             <label>Kommentar: </label><br />
-            <textarea name="comment"></textarea><br />
+            <textarea name="text"></textarea><br />
 
             <input type="submit" />
         @Html.AntiForgeryToken()
@@ -22,11 +22,11 @@
     <ul>
         @foreach (var item in Model.GuestBookEnties)
         {
-            <li>
-                <p>@Html.DisplayFor(modelItem => item.Title) </p>
-                <p>@Html.DisplayFor(modelItem => item.Comment)</p>
-                <p>Erstellt von @Html.DisplayFor(modelItem => item.Name) am @Html.DisplayFor(modelItem => item.Time)</p>
-                <hr />
-            </li>
+        <li>
+            <h3>@Html.DisplayFor(modelItem => item.Title) </h3>
+            <p>@Html.DisplayFor(modelItem => item.Text)</p>
+            <p>Erstellt von @Html.DisplayFor(modelItem => item.Visitor) am @Html.DisplayFor(modelItem => item.Created)</p>
+            <hr />
+        </li>
         }
     </ul>
