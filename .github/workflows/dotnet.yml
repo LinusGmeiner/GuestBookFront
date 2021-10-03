@@ -8,24 +8,31 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     
-    - uses: actions/checkout@v2
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-        
     - name: Azure Setup
       uses: azure/docker-login@v1
       with:
         login-server: idi2019.azurecr.io
         username: idi2019
         password: IAB70oHU0bJTNfDnHA/H4a/eVQTvky0M
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        
+    - name: Build Aufgabe A
+      run: dotnet build
+      working-directory: ./GuestBookFront
+        
+    - name: Release Aufgabe A
+      run: dotnet publish -o ../container
+      working-directory: ./GuestBookFront
+        
+    - uses: actions/checkout@v2
         
     - name: Restore dependencies
       run: dotnet restore
