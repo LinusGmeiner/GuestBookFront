@@ -26,17 +26,17 @@ jobs:
         
     - name: Build Aufgabe A
       run: dotnet build
-      working-directory: ./GuestBookFront
+      working-directory: ./Aufgabe A
         
     - name: Release Aufgabe A
       run: dotnet publish -o ../container
-      working-directory: ./GuestBookFront
+      working-directory: ./Aufgabe A
         
     - uses: actions/checkout@v2
         
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./GuestBookFront
+      working-directory: ./Aufgabe A
       
     - name: Build
       run: dotnet build --no-restore
