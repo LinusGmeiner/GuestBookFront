@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "GuestBook";
+}
+
+<div class="text-center">
+    <h1>Gästebuch</h1>
+    <form action="/" method="post">
+        <fieldset>
+            <legend>Neuer Gästebucheintrag</legend>
+            <label for="title">Titel: </label>
+            <input type="text" name="title" value="Titel" /> <br />
+
+            <label for="visitor">Name: </label>
+            <input type="text" name="visitor" value="Name" /> <br />
+
+            <label for="text">Kommentar: </label><br />
+            <textarea name="text"></textarea><br />
+
+            <input type="submit" />
+        </fieldset>
+        @Html.AntiForgeryToken()
+    </form>
+
+    <h2>Gästebucheinträge</h2>
+    <ul>
+        @foreach (var item in Model.GuestBookEnties)
+        {
+            <li>
+                <h3>@Html.DisplayFor(modelItem => item.Title) </h3>
+                <p>@Html.DisplayFor(modelItem => item.Text)</p>
+                <p>Erstellt von @Html.DisplayFor(modelItem => item.Visitor) am @Html.DisplayFor(modelItem => item.Created)</p>
+                <hr />
+            </li>
+        }
+    </ul>
+</div>
