@@ -24,14 +24,6 @@ jobs:
       with:
         dotnet-version: 5.0.x
         
-    - name: Build Aufgabe A
-      run: dotnet build
-      working-directory: ./Aufgabe A
-        
-    - name: Release Aufgabe A
-      run: dotnet publish -o ../container
-      working-directory: ./Aufgabe A
-        
     - uses: actions/checkout@v2
         
     - name: Restore dependencies
