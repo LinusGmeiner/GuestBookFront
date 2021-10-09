@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        login-server: idi2019.azurecr.io
+        username: idi2019
     
     - name: Azure Setup
       uses: azure/docker-login@v1
       with:
-        login-server: idi2019.azurecr.io
-        username: idi2019
         password: IAB70oHU0bJTNfDnHA/H4a/eVQTvky0M
     
     - name: Setup .NET
@@ -36,14 +36,14 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
-     - name: Build container
+    - name: Build container
       run: docker build -t guestbookfront .
         
-     - name: Tag container
-     run: docker tag guestbookfront idi2019.azurecr.io/dhlg238-gb-a
+    - name: Tag container
+      run: docker tag guestbookfront idi2019.azurecr.io/dhlg238-gb-a
 
-     - name: Publish container
-     run: docker push idi2019.azurecr.io/dhlg238-gb-a
+    - name: Publish container
+      run: docker push idi2019.azurecr.io/dhlg238-gb-a
       
     
       
