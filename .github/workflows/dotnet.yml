@@ -11,21 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - name: Azure Login
-          login-server: idi2019.azurecr.io
-          username: idi2019
-    
-        - name: Azure Setup
-          uses: azure/docker-login@v1
-          with:
-            password: IAB70oHU0bJTNfDnHA/H4a/eVQTvky0M
-        
+        - uses: actions/checkout@v2
         - name: Setup .NET
           uses: actions/setup-dotnet@v1
           with:
             dotnet-version: 5.0.x
-            
-        - uses: actions/checkout@v2
+    
+        - name: Azure Setup
+          uses: azure/docker-login@v1
+          with:
+            login-server: idi2019.azurecr.io
+            username: idi2019
+            password: IAB70oHU0bJTNfDnHA/H4a/eVQTvky0M
             
         - name: Restore dependencies
           run: dotnet restore
