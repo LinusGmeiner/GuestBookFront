@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        login-server: idi2019.azurecr.io
-        username: idi2019
+        - name: Azure Login
+          login-server: idi2019.azurecr.io
+          username: idi2019
     
         - name: Azure Setup
           uses: azure/docker-login@v1
