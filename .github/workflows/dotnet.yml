@@ -36,6 +36,15 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
+     - name: Build container
+      run: docker build -t guestbookfront .
+        
+     - name: Tag container
+     run: docker tag guestbookfront idi2019.azurecr.io/dhlg238-gb-a
+
+     - name: Publish container
+     run: docker push idi2019.azurecr.io/dhlg238-gb-a
+      
     
       
      
