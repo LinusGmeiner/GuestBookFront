@@ -3,5 +3,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 EXPOSE 80
-COPY publish /app/publish .
-ENTRYPOINT ["dotnet", "publish/GuestBookFront.dll"]
+COPY release /app/release .
+ENTRYPOINT ["dotnet", "release/GuestBookFront.dll"]
