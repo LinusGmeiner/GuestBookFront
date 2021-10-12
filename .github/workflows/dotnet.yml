@@ -30,12 +30,15 @@ jobs:
           
         - name: Build
           run: dotnet build --no-restore
+          working-directory: ./GuestBookFront
           
         - name: Test
           run: dotnet test --no-build --verbosity normal
+          working-directory: ./GuestBookFront
           
         - name: Build container
           run: docker build -t guestbookfront .
+          working-directory: ./GuestBookFront
             
         - name: Tag container
           run: docker tag guestbookfront idi2019.azurecr.io/dhlg238-gb-a
